@@ -12,7 +12,8 @@
     "default_popup": "popup.html"
     //"default_icon": "icon-48.png"
   },
-  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://localhost:3000/"],
+  "permissions": ["activeTab", "scripting", "cookies"],
   "background": {
     "service_worker": "background.js"
   },
