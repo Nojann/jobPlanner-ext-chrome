@@ -11,6 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function getDOM() {
-  var html = document.documentElement.outerHTML;
+  var html = document.documentElement.querySelector('body').innerText;
   chrome.runtime.sendMessage({action: 'getDOM', content: html});
 }
