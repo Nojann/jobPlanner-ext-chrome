@@ -5,11 +5,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'getDOM') {
 
     const textContent = message.content;
+    const urlCurrent = message.url;
 
     chrome.cookies.get({ url: url, name: "signed_in" }, (cookie) => {
       if (cookie) {
         console.log(cookie);
-        fetch_jobplanner_api(textContent, cookie);
+        fetch_jobplanner_api(textContent, urlCurrent, cookie);
       } else {
         chrome.runtime.sendMessage({error: "Cookie not found. User is not connected", action: "log_in" });
       }
@@ -17,14 +18,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-const fetch_jobplanner_api = (textContent, cookie) => {
+const fetch_jobplanner_api = (textContent, urlCurrent, cookie) => {
+
   const url_posts_api = `${url}/api/v1/posts`
     const details = {
       method: "POST",
       headers: {
       "Content-Type": "application/json",
       },
-      body: JSON.stringify({content: textContent, token: cookie.value })
+      body: JSON.stringify({content: textContent, url:urlCurrent, token: cookie.value })
     }
 
 
