@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function getDOM() {
+  const urlCurrent = window.location.href;
   const html = document.documentElement.querySelector('body').innerText;
-  chrome.runtime.sendMessage({action: 'getDOM', content: html});
+  chrome.runtime.sendMessage({action: 'getDOM', content: html, url: urlCurrent});
 }
 
 chrome.runtime.onMessage.addListener((message, sender) => {
