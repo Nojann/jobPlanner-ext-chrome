@@ -15,12 +15,29 @@ function getDOM() {
   chrome.runtime.sendMessage({action: 'getDOM', content: html});
 }
 
-// chrome.runtime.onMessage.addListener((message, sender) => {
-//   if (message == "log_in") {
-//     const body = document.querySelector(body);
-
-//     const logIn = '<div><h1>Your are not logged in </h1><button><a href="http://localhost:3000/" target="_blank"></a> Go to JobPlanner</button></div>'
-//   }
-// });
-
-// message: { action: veleur, content: valeur}
+chrome.runtime.onMessage.addListener((message, sender) => {
+  if (message.action == "log_in") {
+    console.log(message.error);
+    const login_message = document.querySelector("#login_message");
+    login_message.classList.remove("hidden");
+    const div_get_dom = document.querySelector("#getDom");
+    div_get_dom.classList.add("hidden");
+  }
+  else if (message.action == "error_network") {
+    const error_message = document.querySelector("#errorMessage");
+    error_message.classList.remove("hidden");
+    error_message.querySelector("p").innerText = message.content;
+  }
+  else if (message.action == "create_ok") {
+    const success_message = document.querySelector("#successMessage");
+    success_message.classList.remove("hidden");
+    success_message.querySelector("p").innerText = "Post created";
+    const div_get_dom = document.querySelector("#getDom");
+    div_get_dom.classList.add("hidden");
+  }
+  else if (message.action == "create_error") {
+    const error_message = document.querySelector("#errorMessage");
+    error_message.classList.remove("hidden");
+    error_message.querySelector("p").innerText = "Error creating post : " + message.content;
+  }
+});
