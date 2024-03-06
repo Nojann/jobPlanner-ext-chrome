@@ -19,12 +19,34 @@
     button:hover {
       background-color: #0056b3;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>Récupérer le DOM</h1>
-  <p>Cliquez sur le bouton pour récupérer le DOM de la page active.</p>
-  <button id="btnGetDOM">Récupérer le DOM</button>
-  <script src="popup.js"></script>
+  <h1>JobPlanner</h1>
+
+  <div id="login_message" class="hidden">
+    <p>Your are not logged in </p>
+    <a href="http://localhost:3000/users/sign_in" target="_blank">
+      <button>Go to JobPlanner</button>
+    </a>
+  </div>
+
+  <div id="getDom">
+    <p>Cliquez sur le bouton pour récupérer le DOM de la page active.</p>
+    <button id="btnGetDOM">Récupérer le DOM</button>
+    <script src="popup.js"></script>
+  </div>
+
+  <div id="errorMessage" class="hidden">
+    <h2>Erreur</h2>
+    <p></p>
+  </div>
+
+  <div id="successMessage" class="hidden">
+    <p></p>
+  </div>
 </body>
 </html>
