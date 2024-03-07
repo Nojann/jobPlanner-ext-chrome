@@ -32,28 +32,27 @@ const fetch_jobplanner_api = (textContent, urlCurrent, cookie) => {
 
     fetch(url_posts_api, details)
       .then(response => {
-        try {
-          if (response.status !== 201) {
-            throw new Error("Network response was not ok");
-          } else {
-            return response.json();
-          }
-        } catch (error) {
-          chrome.runtime.sendMessage({ action: "error_network", content: `Statut : ${response.status}` })
-          console.error('Error:', error);
+        if (response.ok) {
+          console.log(response);
+          return response.json();
+        } else {
+          throw response;
         }
       })
       .then((data) => {
-        console.log(data);
-        if (data.message) {
+        if (data.message == 'created') {
           chrome.runtime.sendMessage({ action: "create_ok", content: `` })
-        } else {
-          chrome.runtime.sendMessage({ action: "create_error", content: `` })
         }
       })
       .catch ((error) => {
-        chrome.runtime.sendMessage({ action: "error_network", content: `${url_posts_api} is not found.` });
-        console.log('Error:', error);
+        console.log(error);
+        if(error.status > 0 && error.status < 600){
+          chrome.runtime.sendMessage({ action: "error_network", content: `Statut : ${error.status}` })
+        }
+        else{
+          chrome.runtime.sendMessage({ action: "error_network", content: `${url_posts_api} is not found.` });
+        }
+
       })
 
 }
