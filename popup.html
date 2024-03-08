@@ -3,40 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
   <title>Popup</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
 </head>
 <body>
   <h1>JobPlanner</h1>
 
   <div id="login_message" class="hidden">
     <p>Your are not logged in </p>
-    <a href="http://localhost:3000/users/sign_in" target="_blank">
-      <button>Go to JobPlanner</button>
-    </a>
+    <div class="flex-end">
+      <a href="http://localhost:3000/users/sign_in" target="_blank">
+        <button class="button-75">Go to dashboard</button>
+      </a>
+    </div>
   </div>
 
   <div id="getDom">
-    <p>Cliquez sur le bouton pour récupérer le DOM de la page active.</p>
-    <button id="btnGetDOM">Récupérer le DOM</button>
+    <p>Simply save an offer in your dashboard, powered by AI !</p>
+    <div class="flex-end">
+      <button class="button-75" id="btnGetDOM"><span>Save</span></button>
+    </div>
     <script src="popup.js"></script>
   </div>
 
@@ -47,6 +33,11 @@
 
   <div id="successMessage" class="hidden">
     <p></p>
+    <div class="flex-end">
+      <a href="http://localhost:3000/users/sign_in" target="_blank">
+        <button class="button-75">Go to dashboard</button>
+      </a>
+    </div>
   </div>
 </body>
 </html>

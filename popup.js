@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener((message, sender) => {
   else if (message.action == "create_ok") {
     const success_message = document.querySelector("#successMessage");
     success_message.classList.remove("hidden");
-    success_message.querySelector("p").innerText = "Post created";
+    success_message.querySelector("p").innerText = "Done !";
     const div_get_dom = document.querySelector("#getDom");
     div_get_dom.classList.add("hidden");
   }
