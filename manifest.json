@@ -9,7 +9,8 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "host_permissions": ["https://jobplanner-515cae46a2f2.herokuapp.com/"],
+  "host_permissions": ["http://localhost:3000/"],
+  //"host_permissions": ["https://jobplanner-515cae46a2f2.herokuapp.com/"],
   "permissions": ["activeTab", "scripting", "cookies"],
   "background": {
     "service_worker": "background.js"
