@@ -8,12 +8,24 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
+  const buttonsGetURL = document.querySelectorAll('.getURL');
+  console.log(buttonsGetURL);
+  buttonsGetURL.forEach((buttonGetURL) => {
+    buttonGetURL.addEventListener('click', function() {
+      getURL();
+    });
+  });
 });
 
 function getDOM() {
   const urlCurrent = window.location.href;
   const html = document.documentElement.querySelector('body').innerText;
   chrome.runtime.sendMessage({action: 'getDOM', content: html, url: urlCurrent});
+}
+
+function getURL() {
+  console.log('getURL')
+  chrome.runtime.sendMessage({action: 'getURL'});
 }
 
 chrome.runtime.onMessage.addListener((message, sender) => {
