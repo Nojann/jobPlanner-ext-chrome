@@ -1,5 +1,5 @@
-const url = "https://jobplanner-515cae46a2f2.herokuapp.com"
-//const url = "http://localhost:3000/"
+const url = "https://jobplanner-c156970ef6ff.herokuapp.com/"
+// const url = "http://localhost:3000/"
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'getDOM') {
