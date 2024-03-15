@@ -1,4 +1,5 @@
-const url = "https://jobplanner-c156970ef6ff.herokuapp.com/"
+const url = "https://www.myjobr.tech"
+const url2 = "https://www.myjobr.tech"
 // const url = "http://localhost:3000/"
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -10,18 +11,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     chrome.cookies.get({ url: url, name: "signed_in" }, (cookie) => {
       if (cookie) {
-        console.log(cookie);
+        // console.log(cookie);
         fetch_jobplanner_api(textContent, urlCurrent, cookie);
       } else {
-        console.log('no cookie');
+        // console.log('no cookie');
         chrome.runtime.sendMessage({error: "Cookie not found. User is not connected", action: "log_in" });
       }
     });
   }
 
   if (message.action === 'getURL') {
-    chrome.tabs.query({url: url}, (tabs) => {
-      console.log(tabs);
+    chrome.tabs.query({url: "*://*.myjobr.tech/*"}, (tabs) => {
       if (tabs.length > 0) {
         var targetTab = tabs[0];
         if (targetTab.active === false) {
@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
       }
       else {
-        chrome.tabs.create({url: url});
+        chrome.tabs.create({url: url2});
       }
     });
   }
@@ -52,7 +52,7 @@ const fetch_jobplanner_api = (textContent, urlCurrent, cookie) => {
     fetch(url_posts_api, details)
       .then(response => {
         if (response.ok) {
-          console.log(response);
+          // console.log(response);
           return response.json();
         } else {
           throw response;
@@ -64,7 +64,7 @@ const fetch_jobplanner_api = (textContent, urlCurrent, cookie) => {
         }
       })
       .catch ((error) => {
-        console.log(error);
+        // console.log(error);
         if(error.status > 0 && error.status < 600){
           chrome.runtime.sendMessage({ action: "error_network", content: `Statut : ${error.status}` })
         }

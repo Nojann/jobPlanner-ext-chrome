@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   const buttonsGetURL = document.querySelectorAll('.getURL');
-  console.log(buttonsGetURL);
+  // console.log(buttonsGetURL);
   buttonsGetURL.forEach((buttonGetURL) => {
     buttonGetURL.addEventListener('click', function() {
       getURL();
@@ -24,13 +24,13 @@ function getDOM() {
 }
 
 function getURL() {
-  console.log('getURL')
+  // console.log('getURL')
   chrome.runtime.sendMessage({action: 'getURL'});
 }
 
 chrome.runtime.onMessage.addListener((message, sender) => {
   if (message.action == "log_in") {
-    console.log(message.error);
+    // console.log(message.error);
     const login_message = document.querySelector("#login_message");
     login_message.classList.remove("hidden");
     const div_get_dom = document.querySelector("#getDom");

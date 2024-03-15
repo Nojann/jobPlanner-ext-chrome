@@ -9,7 +9,7 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "host_permissions": ["https://jobplanner-c156970ef6ff.herokuapp.com/", "http://localhost:3000/"],
+  "host_permissions": ["https://www.myjobr.tech/", "http://localhost:3000/"],
   "permissions": ["activeTab", "scripting", "cookies"],
   "background": {
     "service_worker": "background.js"
