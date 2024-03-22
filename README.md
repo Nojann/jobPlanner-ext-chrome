@@ -1,6 +1,6 @@
 # Description
 
-L'extension chrome Jobr permet d'enregistrer des offres d'emploi dans le dashboard Jobr.
+L'extension chrome Jobr permet d'enregistrer des offres d'emploi dans le [dashboard Jobr](https://github.com/Emre-Alk/jobplanner/edit/master/README.md).
 
 # Installation
 
